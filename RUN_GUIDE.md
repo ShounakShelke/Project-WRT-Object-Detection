@@ -4,14 +4,6 @@ A real-time object detection system for retail items using YOLOv8 and React.
 
 ---
 
-## Prerequisites
-
-- Python 3.10+
-- Node.js 18+
-- Git
-
----
-
 ## 1. Setup Python Virtual Environment
 
 ### Windows (PowerShell)

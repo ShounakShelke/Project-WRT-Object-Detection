@@ -16,34 +16,7 @@ A real-time object detection system for retail/stationery items using YOLOv8 and
 - **ML Framework**: PyTorch, Ultralytics
 
 ## Quick Start
-
-### 1. Backend Setup
-
-```powershell
-cd skipq-backend
-
-# Create and activate virtual environment
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Start server
-python main.py
-```
-
-### 2. Frontend Setup
-
-```powershell
-cd skipq-frontend
-npm install
-npm run dev
-```
-
-### 3. Open App
-
-Navigate to `http://localhost:5173` and allow camera access.
+Refer **RUN_GUIDE.md**
 
 ## Project Structure
 
@@ -89,4 +62,7 @@ python ml/train_yolo.py
 
 ## License
 
-MIT License
+Apache 2.0 License
+
+
+Made By Shounak Shelke @2026 
