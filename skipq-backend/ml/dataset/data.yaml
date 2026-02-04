@@ -1,0 +1,10 @@
+path: C:\Users\HP\Desktop\Project CO1 FlashCart\skipq-backend\ml\dataset
+train: images/train
+val: images/val
+names:
+  0: eraser
+  1: scale
+  2: pencil
+  3: sharpener
+  4: grocery_item
+nc: 5

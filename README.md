@@ -1,0 +1,92 @@
+# Project WRT Object Detection
+
+A real-time object detection system for retail/stationery items using YOLOv8 and React.
+
+## Features
+
+- **Real-time Detection**: Identifies objects (Pencil, Eraser, Scale, Sharpener, Grocery Items) instantly
+- **Live Camera Feed**: Simple interface with camera integration
+- **Live HUD**: Displays detected object names and confidence scores
+- **Custom Training**: Train on your own dataset for specific items
+
+## Tech Stack
+
+- **Backend**: Python, FastAPI, YOLOv8 (Ultralytics)
+- **Frontend**: React, TypeScript, Vite
+- **ML Framework**: PyTorch, Ultralytics
+
+## Quick Start
+
+### 1. Backend Setup
+
+```powershell
+cd skipq-backend
+
+# Create and activate virtual environment
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start server
+python main.py
+```
+
+### 2. Frontend Setup
+
+```powershell
+cd skipq-frontend
+npm install
+npm run dev
+```
+
+### 3. Open App
+
+Navigate to `http://localhost:5173` and allow camera access.
+
+## Project Structure
+
+```
+Project WRT Object Detection/
+├── skipq-backend/
+│   ├── main.py              # FastAPI server
+│   ├── requirements.txt     # Python dependencies
+│   └── ml/
+│       ├── prepare_dataset.py   # Dataset preparation
+│       ├── train_yolo.py        # Model training
+│       └── dataset/             # Training data
+├── skipq-frontend/
+│   ├── src/
+│   │   └── components/
+│   │       └── SimpleDetector.tsx
+│   └── package.json
+├── README.md
+└── RUN_GUIDE.md             # Detailed setup instructions
+```
+
+## Custom Training
+
+See [RUN_GUIDE.md](./RUN_GUIDE.md) for detailed training instructions.
+
+```powershell
+# Quick training steps
+cd skipq-backend
+.\venv\Scripts\Activate.ps1
+python ml/prepare_dataset.py
+python ml/train_yolo.py
+```
+
+## Supported Classes
+
+| ID | Class        |
+|----|--------------|
+| 0  | Eraser       |
+| 1  | Scale        |
+| 2  | Pencil       |
+| 3  | Sharpener    |
+| 4  | Grocery Item |
+
+## License
+
+MIT License
