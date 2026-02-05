@@ -1,183 +1,84 @@
-# Run Guide: Project WRT Object Detection
+# Run Guide: Project WRT Pro Dashboard
 
-A real-time object detection system for retail items using YOLOv8 and React.
+Deploying the BMW M-Performance inspired object detection suite.
 
 ---
 
-## 1. Setup Python Virtual Environment
+## 1. Engine Initialization (Backend)
+
+The backend server manages the YOLOv8-Pro inference engine and provides real-time detection telemetry.
 
 ### Windows (PowerShell)
 ```powershell
-# Navigate to project folder
-cd skipq-backend
+# Navigate to backend folder
+cd backend
 
-# Create virtual environment
+# Create virtual environment (if not already created)
 python -m venv venv
 
 # Activate virtual environment
 .\venv\Scripts\Activate.ps1
 
-# If you get an execution policy error, run this first:
-# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies (If you see timeout errors, use the --default-timeout flag)
+pip install --default-timeout=1000 -r requirements.txt
 ```
 
-### Windows (Command Prompt)
-```cmd
-cd skipq-backend
-python -m venv venv
-venv\Scripts\activate.bat
-pip install -r requirements.txt
-```
-
-### Linux/macOS
-```bash
-cd skipq-backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+**Network Access:**
+The server starts on http://localhost:5000. 
+*Note: The first run may download the model weights (YOLOv8 Medium/Nano) if not present.*
 
 ---
 
-## 2. Start ML Backend
+## 2. Cockpit Deployment (Frontend)
 
-```powershell
-# Make sure venv is activated
-cd skipq-backend
-.\venv\Scripts\Activate.ps1
-
-# Run the backend server
-python main.py
-```
-
-> **Note:** First run will download the YOLOv8 model (~6MB).
-
-Backend runs on: `http://localhost:8000`
-
----
-
-## 3. Start Frontend App
+The frontend is a premium React dashboard utilizing the Project WRT Drive architecture.
 
 ```powershell
 # Open a new terminal
-cd skipq-frontend
+cd frontend
 
-# Install dependencies (first time only)
+# Install Node dependencies (First time only)
 npm install
 
-# Start development server
+# Deploy the Dashboard
 npm run dev
 ```
 
-Frontend runs on: `http://localhost:5173`
-
-- Open the URL in your browser
-- Allow camera permissions when prompted
-
----
-
-## 4. Custom Model Training (Optional)
-
-To train the model on your own dataset:
-
-### Step 1: Prepare Dataset
-```powershell
-# Activate venv
-cd skipq-backend
-.\venv\Scripts\Activate.ps1
-
-# Run dataset preparation
-python ml/prepare_dataset.py
-```
-
-### Step 2: Train Model
-```powershell
-python ml/train_yolo.py
-```
-
-Training will create a model at: `skipq-backend/ml/runs/skipq_retail/weights/best.pt`
-
-### Step 3: Validate Model
-```powershell
-python ml/train_yolo.py validate
-```
-
-### Step 4: Export Model (Optional)
-```powershell
-python ml/train_yolo.py export
-```
+**Accessing the Suite:**
+The dashboard will be available at http://localhost:8080 (or similar, check terminal output).
+- Ensure your browser has Camera Permissions enabled.
+- Click ENGINE START to begin real-time sector scanning.
 
 ---
 
-## Dataset Structure
+## 3. Operational Telemetry
 
-Place your training data in `skipq-backend/ml/dataset/`:
+### Detection Logic
+- Sector Identification Log: Displays detected objects with probability percentage.
+- HUD (Live Scan): Overlays bounding boxes with M-Performance Cyan accents.
+- Entity Counter: Real-time count of active signatures in view.
 
-```
-dataset/
-├── images/
-│   ├── train/    # Training images (80-90%)
-│   └── val/      # Validation images (10-20%)
-├── labels/
-│   ├── train/    # YOLO format .txt labels
-│   └── val/      # YOLO format .txt labels
-└── data.yaml     # Dataset configuration
-```
-
-### Label Format (YOLO)
-Each `.txt` file should have one line per object:
-```
-class_id x_center y_center width height
-```
-All values are normalized (0-1).
-
----
-
-## Current Classes
-
-| ID | Class Name    |
-|----|---------------|
-| 0  | eraser        |
-| 1  | scale         |
-| 2  | pencil        |
-| 3  | sharpener     |
-| 4  | grocery_item  |
+### Engine Priorities
+The system automatically selects the best available engine:
+1. ml/runs/skipq_pro_plus/best.pt (Custom Pro Accuracy)
+2. yolov8m.pt (Global High Precision)
+3. yolov8n.pt (Emergency Fallback)
 
 ---
 
 ## Troubleshooting
 
-### Virtual Environment Issues
+### Server Port Conflicts:
+If port 5000 or 8080 is blocked:
 ```powershell
-# If venv activation fails on Windows
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# Kill existing processes (Windows)
+Stop-Process -Id (Get-NetTCPConnection -LocalPort 5000).OwningProcess -Force
 ```
 
-### Port Already in Use
-```powershell
-# Kill process on port 8000
-netstat -ano | findstr :8000
-taskkill /PID <PID> /F
-```
-
-### CUDA/GPU Issues
-```powershell
-# Install CUDA-enabled PyTorch (optional, for faster training)
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
-```
+### Camera Access:
+Ensure no other application (Zoom, Teams, etc.) is using your webcam.
 
 ---
 
-## Quick Reference
-
-| Command | Description |
-|---------|-------------|
-| `python -m venv venv` | Create virtual environment |
-| `.\venv\Scripts\Activate.ps1` | Activate venv (PowerShell) |
-| `deactivate` | Deactivate venv |
-| `python main.py` | Start backend |
-| `npm run dev` | Start frontend |
-| `python ml/train_yolo.py` | Train model |
+**Project WRT Pro** | Engineering Performance into Vision
+Made by Shounak Shelke @2026

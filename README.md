@@ -1,68 +1,49 @@
-# Project WRT Object Detection
+# Project WRT: Pro Object Detection Suite
 
-A real-time object detection system for retail/stationery items using YOLOv8 and React.
+A high-performance, real-time object detection cockpit inspired by BMW M-Performance aesthetics. Powered by YOLOv8 (Medium/Pro) and a sleek React-based dashboard.
 
 ## Features
 
-- **Real-time Detection**: Identifies objects (Pencil, Eraser, Scale, Sharpener, Grocery Items) instantly
-- **Live Camera Feed**: Simple interface with camera integration
-- **Live HUD**: Displays detected object names and confidence scores
-- **Custom Training**: Train on your own dataset for specific items
+- **M-Tech Cockpit UI**: A stunning automotive-inspired dashboard featuring high-contrast BMW M colors (Cyan, Navy, Red).
+- **Pro-Accuracy Engine**: Multi-stage model loader prioritizing High-Accuracy custom weights (YOLOv8m) with robust fallbacks.
+- **Universal Detection**: Full support for global object detection (80 classes) out of the box.
+- **Live Sector Scanning**: Real-time HUD with digital crosshairs, latency tracking, and entity counters.
+- **Performance Identification Log**: A dynamic sidebar for tracking detected entities with precision probability scoring.
+- **Ultra-Low Latency**: Optimized inference pipeline for smooth 30+ FPS scanning.
 
 ## Tech Stack
 
-- **Backend**: Python, FastAPI, YOLOv8 (Ultralytics)
-- **Frontend**: React, TypeScript, Vite
-- **ML Framework**: PyTorch, Ultralytics
-
-## Quick Start
-Refer **RUN_GUIDE.md**
+- **Frontend**: React 18, Vite, Tailwind CSS, Shadcn/UI, Lucide-Icons.
+- **Backend**: Flask (Python), Flask-CORS.
+- **Computer Vision**: Ultralytics YOLOv8 (Medium/Nano), OpenCV (Inference Pipeline).
 
 ## Project Structure
 
-```
-Project WRT Object Detection/
-├── skipq-backend/
-│   ├── main.py              # FastAPI server
-│   ├── requirements.txt     # Python dependencies
-│   └── ml/
-│       ├── prepare_dataset.py   # Dataset preparation
-│       ├── train_yolo.py        # Model training
-│       └── dataset/             # Training data
-├── skipq-frontend/
+```text
+Project CO1 FlashCart/
+├── frontend/             # BMW M-Performance Dashboard (React)
 │   ├── src/
-│   │   └── components/
-│   │       └── SimpleDetector.tsx
-│   └── package.json
-├── README.md
-└── RUN_GUIDE.md             # Detailed setup instructions
+│   │   ├── pages/Index.tsx    # Main Cockpit Logic
+│   │   └── components/ui/     # Premium UI primitives
+│   └── tailwind.config.ts     # Racing Design Tokens
+└── backend/              # Pro-Accuracy Flask Server 
+    ├── main.py           # Core Execution Engine
+    ├── requirements.txt  # Slim dependencies
+    └── ml/               # Production Model weights
 ```
 
-## Custom Training
+## Quick Execution
+Refer **RUN_GUIDE.md**
 
-See [RUN_GUIDE.md](./RUN_GUIDE.md) for detailed training instructions.
+## Operational Modes
 
-```powershell
-# Quick training steps
-cd skipq-backend
-.\venv\Scripts\Activate.ps1
-python ml/prepare_dataset.py
-python ml/train_yolo.py
-```
+| Mode | Engine | Status |
+|------|--------|--------|
+| **PRO+** | YOLOv8m (Custom) | Highest Precision |
+| **BALANCED** | YOLOv8m (COCO) | Universal Scanner |
+| **LITE** | YOLOv8n (COCO) | Maximum Speed |
 
-## Supported Classes
+---
 
-| ID | Class        |
-|----|--------------|
-| 0  | Eraser       |
-| 1  | Scale        |
-| 2  | Pencil       |
-| 3  | Sharpener    |
-| 4  | Grocery Item |
+Made by **Shounak Shelke** @2026
 
-## License
-
-Apache 2.0 License
-
-
-Made By Shounak Shelke @2026 

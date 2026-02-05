@@ -1,48 +1,33 @@
-# Project Structure: SkipQ
+# Project Structure: Project WRT Pro
 
-This document outlines the file architecture for the **SkipQ** Smart Checkout System.
+A streamlined view of the High-Accuracy Detection Suite architecture.
 
 ```text
 Project CO1 FlashCart/
-├── README.md               # Main project documentation
-├── PROJECT_STRUCTURE.md    # This file
-├── RUN_GUIDE.md            # Setup and execution instructions
+├── README.md               # Performance Overview
+├── RUN_GUIDE.md            # Deployment Instructions
+├── PROJECT_STRUCTURE.md    # [THIS FILE]
 │
-├── skipq-backend/          # Python Flask ML Server
-│   ├── main.py             # Entry point: Flask App & API Routes
-│   ├── requirements.txt    # Python dependencies
-│   ├── uploads/            # Temporary storage for uploaded frames (auto-generated)
-│   └── ml/                 # Machine Learning resources
-│       ├── train_yolo.py   # Script to train custom YOLOv8 model
-│       ├── dataset/        # (User Created) Training images & labels
-│       └── models/         # Directory for saving trained .pt weights
+├── frontend/               # BMW M-Performance Dashboard (React/Vite)
+│   ├── src/
+│   │   ├── pages/
+│   │   │   └── Index.tsx   # Core Cockpit Logic & HUD Controller
+│   │   ├── components/ui/  # Premium Racing UI Primitives
+│   │   └── lib/            # Utilities (Tailwind merge, etc.)
+│   ├── tailwind.config.ts  # Design System Tokens
+│   └── package.json        # Frontend Dependencies
 │
-└── skipq-frontend/         # React TypeScript Client
-    ├── index.html          # HTML entry point
-    ├── package.json        # Node dependencies & scripts
-    ├── vite.config.ts      # Vite configuration
-    ├── tailwind.config.ts  # Tailwind CSS configuration
-    ├── public/             # Static assets (favicons, etc.)
-    └── src/
-        ├── main.tsx        # React entry point
-        ├── App.tsx         # Main Routing component
-        ├── index.css       # Global styles & Tailwind imports
-        │
-        ├── components/     # Reusable UI Components
-        │   ├── layout/     # Layout wrappers (RoleLayout)
-        │   ├── ui/         # Shadcn/UI primitive components
-        │   ├── guard/      # Guard-specific components (Camera, Lists)
-        │   └── customer/   # Customer-specific components (Cart, Scanner)
-        │
-        ├── pages/          # Major Route Views
-        │   ├── Index.tsx           # Landing Page
-        │   ├── CustomerPortal.tsx  # Shopper Interface
-        │   ├── GuardPortal.tsx     # Security Interface
-        │   └── AdminDashboard.tsx  # Manager Interface
-        │
-        ├── services/       # API & Logic Layers
-        │   ├── api.ts              # Axios HTTP client for Backend
-        │   └── mockData.ts         # fallback/demo data
-        │
-        └── types/          # TypeScript interfaces
+└── backend/                # Pro-Accuracy Inference Server (Flask)
+    ├── main.py             # Entry: Multi-Stage Engine Loader & API
+    ├── requirements.txt    # Python Production Dependencies
+    └── ml/                 # Machine Learning Assets
+        └── yolov8n.pt      # Global Detection Weights (Emergency Fallback)
 ```
+
+### Key Modules:
+- **Cockpit (frontend)**: Handles the high-speed telemetry display and camera stream.
+- **Inference Engine (backend)**: Real-time neural processing using YOLOv8 models.
+- **HUD Layer**: Canvas-based SVG/2D overlays for identifying entities with M-Tech styling.
+
+---
+**Shounak Shelke @2026**

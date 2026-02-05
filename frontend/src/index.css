@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Project WRT - BMW M Racing Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* BMW M Racing Colors - Vibrant */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 210 20% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 210 20% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    /* BMW Cyan - Vibrant */
+    --primary: 193 100% 50%;
+    --primary-foreground: 210 25% 8%;
+
+    /* Deep Blue */
+    --secondary: 220 100% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Racing Red */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 210 15% 18%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 193 100% 50%;
+    --accent-foreground: 210 25% 8%;
+
+    --border: 210 20% 22%;
+    --input: 210 20% 18%;
+    --ring: 193 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* BMW M Stripe Colors */
+    --bmw-cyan: 193 100% 50%;
+    --bmw-blue: 220 100% 45%;
+    --bmw-red: 0 100% 50%;
+    --bmw-purple: 280 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  /* BMW M Stripe Header */
+  .bmw-stripe {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--bmw-cyan)) 0%,
+      hsl(var(--bmw-cyan)) 25%,
+      hsl(var(--bmw-blue)) 25%,
+      hsl(var(--bmw-blue)) 50%,
+      hsl(var(--bmw-red)) 50%,
+      hsl(var(--bmw-red)) 75%,
+      hsl(var(--bmw-purple)) 75%,
+      hsl(var(--bmw-purple)) 100%
+    );
+  }
+
+  /* Glass Panel */
+  .glass-panel {
+    @apply bg-card border border-border rounded-xl;
+  }
+
+  /* Racing Title - Bold Italic White with Cyan Accent */
+  .racing-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: white;
+  }
+
+  .racing-title-accent {
+    color: hsl(var(--bmw-cyan));
+  }
+
+  /* Red underline accent */
+  .title-underline {
+    width: 80px;
+    height: 3px;
+    background: hsl(var(--bmw-red));
+    margin: 0 auto;
+  }
+
+  /* Detection Badge */
+  .detection-badge {
+    @apply bg-muted text-foreground px-6 py-3 rounded-lg font-medium text-sm tracking-wide;
+    font-family: 'Rajdhani', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-bmw-cyan {
+    color: hsl(var(--bmw-cyan));
+  }
+
+  .text-bmw-red {
+    color: hsl(var(--bmw-red));
+  }
+
+  .bg-bmw-cyan {
+    background-color: hsl(var(--bmw-cyan));
+  }
+
+  .border-bmw-cyan {
+    border-color: hsl(var(--bmw-cyan));
+  }
+}
